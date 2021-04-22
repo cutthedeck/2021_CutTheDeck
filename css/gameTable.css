@@ -1,0 +1,26 @@
+#gameTable {
+	position: relative;
+	border-radius: 50px;
+	background-color: forestgreen;
+	border: 5px solid brown;
+  overflow: hidden;
+}
+
+.card {
+	position: absolute;
+	top: 80;
+	padding: none;
+	border: none;
+	outline-style: dashed;
+}
+
+#message {
+	position: relative;
+	margin: auto;
+	top: 80;
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+}
