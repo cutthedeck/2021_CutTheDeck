@@ -1,0 +1,30 @@
+{
+  "name": "2021_cutthedeck",
+  "version": "1.0.0",
+  "description": "RealTime Chat with rooms",
+  "main": "server.js",
+  "engines": {
+    "node": "v14.16.1"},
+  "scripts": {
+    "start:": "node server.js",
+    "start:dev": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutthedeck/2021_CutTheDeck.git"
+  },
+  "author": "Fernando Gonzalez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cutthedeck/2021_CutTheDeck/issues"
+  },
+  "homepage": "https://github.com/cutthedeck/2021_CutTheDeck#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
