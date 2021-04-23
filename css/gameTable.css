@@ -1,5 +1,6 @@
 #gameTable {
 	position: relative;
+	margin: 0 auto;
 	border-radius: 50px;
 	background-color: forestgreen;
 	border: 5px solid brown;
