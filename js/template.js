@@ -3,7 +3,8 @@ class CtdHeader extends HTMLElement {
     this.innerHTML = `
       <header>
         <img id=title src=imgs/img_header.png>
-      </header>         `        
+      </header>
+    `        
   }
 }
 
@@ -12,7 +13,8 @@ class CtdFooter extends HTMLElement {
     this.innerHTML = `
       <footer>
         <p>&copy; Copyright 2021 Cut The Deck Dev. Team<br>All rights reserved</p>
-      </footer>    `        
+      </footer>
+    `        
   }
 }
 
