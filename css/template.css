@@ -1,0 +1,63 @@
+body {
+  background-color: #004d25;
+  background: url("/imgs/img_background.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+}
+
+header {
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+#title {
+  display: block;
+  height: 100%;
+  object-fit: fill;
+  margin: auto;
+}
+
+footer {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.25rem;
+  margin-top: 3.13rem;
+  text-align: center;
+}
+
+/* for mobile */
+@media screen and (max-width: 599px) { 
+  header {
+    margin-top: .5rem;
+    height: 7rem;
+  }
+}
+
+/* for tablet portrait up*/
+@media screen and (min-width: 600px) {
+  header {
+    margin-top: .75rem;
+    height: 9rem;
+  }
+}
+
+/* for tablet landscape up */
+@media screen and (min-width: 900px) { 
+  header {
+    margin-top: .88rem;
+    height: 12rem;
+  }
+}
+
+/* for desktop up */
+@media screen and (min-width: 1200px) { 
+  header {
+    margin-top: 1rem;
+    height: 14rem;
+  }
+}

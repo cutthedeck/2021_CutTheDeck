@@ -1,0 +1,90 @@
+table {
+  table-layout: fixed;
+  margin: auto;
+  background-image: url("/imgs/img_nav_background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: visible;
+}
+
+td {
+  overflow: visible;
+  text-align: center;
+}
+
+.linkImg {
+  transition: .1s;
+  filter: drop-shadow(1.13rem 1.13rem .38rem rgba(0, 0, 0, 0.8));
+}
+
+.linkImg:hover {
+  transform: scale(1.25);
+  filter: drop-shadow(1.25rem 1.25rem .5rem rgba(0, 0, 0, 0.8));
+}
+
+/* for mobile */
+@media screen and (max-width: 599px) { 
+  table {
+    margin-top: 2.19rem;
+    background-size: 35%;
+  }
+
+  .linkImg {
+    width: 4.69rem;
+  }
+
+  td {
+    height: 0.9rem;
+  }
+}
+
+/* for tablet portrait up*/
+@media screen and (min-width: 600px) {
+  table {
+    margin-top: 2.5rem;
+    background-size: 35%;
+  }
+
+  .linkImg {
+    width: 5.63rem;
+  }
+
+  td {
+    width: 5.44rem;
+    height: .94rem;
+  }
+}
+
+/* for tablet landscape up */
+@media screen and (min-width: 900px) { 
+  table {
+    margin-top: 2.81rem;
+    background-size: 40%;
+  }
+
+  .linkImg {
+    width: 6.25rem;
+  }
+
+  td {
+    width: 5.75rem;
+    height: 1.25rem;
+  }
+}
+
+/* for desktop up */
+@media screen and (min-width: 1200px) { 
+  table {
+    margin-top: 3.13rem;
+    background-size: 50%;
+  }
+
+  .linkImg {
+    width: 7.5rem;
+  }
+  
+  td {
+    width: 7.5rem;
+    height: 2.25rem;
+  }
+}
