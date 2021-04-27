@@ -14,7 +14,7 @@ const io = socketio(server);
 
 
 // Set static folder
-app.use(express.static(__dirname));
+app.use(express.static(__dirname)); 
 
 const Admin = 'Admin';
 
