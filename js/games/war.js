@@ -223,8 +223,8 @@ $(function() {
 					backImage = new Image(cardWidth, cardHeight);
 					image.onload = loaded();
 					backImage.onload = loaded();
-					image.src = "sprites/card" + suit + value + ".png";
-					backImage.src = "sprites/cardBack.png";
+					image.src = "imgs/sprites/card" + suit + value + ".png";
+					backImage.src = "imgs/sprites/cardBack.png";
 					
 					cardImages.set(suit + value, image);
 					cardImages.set(suit + value + "Back", backImage);
