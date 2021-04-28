@@ -31,16 +31,42 @@ img {
 	text-align: center;
 }
 
+.btn-group button {
+  background-color: #af684c; 
+  border: 1px solid rgb(128, 51, 0); 
+  color: white; 
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 50%; 
+  display: block;
+	position:relative;
+	right:-1170px;
+	top: 100px;
+	width: 90px;
+	border-radius: 10%;
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; 
+}
+
+
+.btn-group button:hover {
+  background-color: #8e723e;
+}
+
 #boxed{
 	position: relative;
 	left: 590px;
-  height: 300px;
+  height: 450px;
   width: 300px;
+	top: -100px;
   background-color: rgb(106, 190, 134);
   color: #fff;
   opacity: 0.7;
   padding: 20px;
 	border-radius: 10%;
+	text-align: center;
 
 }
 

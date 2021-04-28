@@ -12,6 +12,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	
 }
 
 body {
@@ -19,6 +20,7 @@ body {
 	font-size: 16px;
 	background: var(--light-color);
 	margin: 20px;
+	opacity: 1;
 }
 
 ul {
@@ -42,7 +44,8 @@ a {
 
 .chat-container {
 	position: relative;
-	max-width: 1100px;
+	max-width: 900px;
+	width: 400px;
 	background: #fff;
 	margin: 30px auto;
 	overflow: hidden;
