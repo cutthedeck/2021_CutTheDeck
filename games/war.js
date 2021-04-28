@@ -100,9 +100,13 @@ $(function() {
 		this.x = x;
 		this.y = y;
 		if (animate) {
-			this.$selector.animate({left: x - this.width / 2, top: y - this.width / 2});
+			animationPlaying = true;
+			this.$selector.animate({left: x - this.width / 2, top: y - this.height / 2}).promise().done(function() {
+				console.log("Animating ", animationPlaying);
+				animationPlaying = false;
+			});
 		} else {
-			this.$selector.css({left: x - this.width / 2, top: y - this.width / 2});
+			this.$selector.css({left: x - this.width / 2, top: y - this.height / 2});
 		}
 		
 	}
@@ -323,6 +327,10 @@ $(function() {
 		
 
 		$(".card").click(function() {
+			if (animationPlaying || playerWait) {
+				return;
+			}
+			
 			let card = cardRefs.get(this.id);
 			
 			switch(currentMode) {
@@ -365,12 +373,15 @@ $(function() {
 
 							} else if (player2Card.value > card.value) {
 								animationPlaying = true;
+								playerWait = true;
+								
+								// Wait to move and allow clicks after
 								setTimeout(function() {
 									moveCards(player1BattleCards.cards.length, player1BattleCards, player2Discard);
 									moveCards(player2BattleCards.cards.length, player2BattleCards, player2Discard);
 									changeMode("collect");
 									changeMode("play");
-									animationPlaying = false;
+									playerWait = false;
 								}, 800);
 							} else {
 								changeMode("collect");
@@ -446,7 +457,8 @@ $(function() {
 					if (player1Deck.hasCards()){
 						card = player1Deck.getLastCard();
 					
-						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
+						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2 &&
+							 !(playerWait || animationPlaying)) {
 							card.$selector.css({"outline": "3px solid red"});
 						} else {
 							card.$selector.css({"outline": "none"});
@@ -459,7 +471,8 @@ $(function() {
 					if (player1BattleCards.hasCards()) {
 						card = player1BattleCards.getLastCard();
 					
-						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
+						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2 &&
+							 !(playerWait || animationPlaying)) {
 							
 							card.$selector.css({"outline": "3px solid red"});
 						} else {
@@ -485,7 +498,7 @@ $(function() {
 	var cardWidth = 140 * 0.7;
 	var cardHeight = 190 * 0.7;
 	var player1Bottom = 100
-	var player2Top = 65
+	var player2Top = 100
 	var playArea = new PlayArea(900, 600);
 	var mainDeck = new CardCollection(playArea.width / 2, playArea.height / 2);
 	var player1Deck = new CardCollection(cardWidth, playArea.height - player1Bottom);
@@ -495,6 +508,7 @@ $(function() {
 	var player1BattleCards = new CardCollection(playArea.width / 2 - 50, playArea.height / 2, -20, 0);
 	var player2BattleCards = new CardCollection(playArea.width / 2 +  50, playArea.height / 2, 20, 0);
 	var animationPlaying = false;
+	var playerWait = false;
 
 	var toLoad = 104;
 	var highestZ = 0;
