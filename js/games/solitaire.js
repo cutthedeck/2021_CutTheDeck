@@ -92,11 +92,12 @@ $(function() {
 	show() {
 		// Fix me
 		//this.faceUp = !this.faceUp;
+		this.$selector.css("visibility", "visible");
 		this.flip();
 	}
 	
 	hide() {
-		this.$selector.html();
+		this.$selector.css("visibility", "hidden");
 	}
 	
 	flipUp() {
@@ -124,8 +125,15 @@ $(function() {
 	move(x,y,animate = true) {
 		this.x = x;
 		this.y = y;
+		
 		if (animate) {
-			this.$selector.animate({left: x - this.width / 2, top: y - this.height / 2}, 200);
+			animationPlaying = true;
+			
+			this.$selector.animate({left: x - this.width / 2, top: y - this.height / 2}, 100).promise().done(
+				function() {
+					animationPlaying = false;
+					// Return speed to default
+			});
 		} else {
 			this.$selector.css({left: x - this.width / 2, top: y - this.height / 2});
 		}
@@ -142,11 +150,11 @@ $(function() {
 			this.cards = cards;
 		}
 		
-		addCard(card, move = true) {
+		addCard(card, move = true, animate = true) {
 			this.cards.push(card);
 			card.$selector.css({"outline": "none"});
 			if (move) {
-				card.move(this.x + this.cards.length * this.stagerX, this.y + this.cards.length * this.stagerY);
+				card.move(this.x + this.cards.length * this.stagerX, this.y + this.cards.length * this.stagerY, animate);
 
 			}
 
@@ -177,7 +185,7 @@ $(function() {
 		shuffle(animate = true) {
 		
 			if (animate) {
-				
+
 				let originX = this.cards[0].x;
 				for (let times = 0; times < 2; times++) {
 					for (let i = 0; i < this.cards.length; i++) {
@@ -195,13 +203,13 @@ $(function() {
 
 					}			
 				}
-				
+
 				for (let i = 0; i < this.cards.length; i++) {
 					let card = this.cards[i];
 					card.move(originX, card.y, true);
 				}
 			}
-			
+
 			// Populate each position with a card selecteded from
 			// that position or less (Fischer - Yates)
 			for (let i = this.cards.length - 1; i > 0; i--) {
@@ -281,6 +289,8 @@ $(function() {
 				backImage.src = "imgs/sprites/cardBorderBlack.png";
 				cardImages.set("CardBorder" + "Pile" + i,image);
 				cardRefs.set("CardBorder" + "Pile" + i, new Card(cardImages.get("CardBorder" + "Pile" + i), cardImages.get("CardBorder" + "Pile" + i), "Border", "Pile" + i));
+				
+				cardRefs.get("CardBorder" + "Pile" + i).hide();
 			}
 			
 			// Stacks
@@ -293,6 +303,8 @@ $(function() {
 				backImage.src = "imgs/sprites/cardBorderBlack.png";
 				cardImages.set("CardBorder" + "Stack" + i,image);
 				cardRefs.set("CardBorder" + "Stack" + i, new Card(cardImages.get("CardBorder" + "Stack" + i), cardImages.get("CardBorder" + "Stack" + i), "Border", "Stack" + i));
+				
+				cardRefs.get("CardBorder" + "Stack" + i).hide();
 			}
 			
 			// LeftOver / Draw pile
@@ -304,10 +316,12 @@ $(function() {
 			backImage.src = "imgs/sprites/cardBorderBlack.png";
 			cardImages.set("CardBorderLeftOver",image);
 			cardRefs.set("CardBorderLeftOver", new Card(cardImages.get("CardBorderLeftOver"), cardImages.get("CardBorderLeftOver"), "Border", 0));
+			
+			cardRefs.get("CardBorderLeftOver").hide();
 		}
 	}
 	
-	function moveCards(numberOfCards, fromCollection, toCollections, reverse = false) {
+	function moveCards(numberOfCards, fromCollection, toCollections, reverse = false, animate = true) {
 		
 		// Check if array and if not, put into one
 		// This allows passing of either array of collections
@@ -325,10 +339,9 @@ $(function() {
 			// the same
 			let removeIndex = fromLength - numberOfCards;
 			for(var i = removeIndex; i < fromLength; i++) {
-				console.log(fromCollection);
 				card = fromCollection.removeCard(removeIndex);
 				card.clickable = false;
-				toCollections[i%numberOfCollections].addCard(card);
+				toCollections[i%numberOfCollections].addCard(card, true, animate);
 				card.$selector.css({zIndex: highestZ});
 				highestZ += 1
 			}
@@ -336,7 +349,7 @@ $(function() {
 			for(var i = 0; i < numberOfCards; i++) {
 				card = fromCollection.removeCard();
 				card.clickable = false;
-				toCollections[i % numberOfCollections].addCard(card);
+				toCollections[i % numberOfCollections].addCard(card, true, animate);
 				card.$selector.css({zIndex: highestZ});
 				highestZ += 1
 			}
@@ -422,6 +435,59 @@ $(function() {
 			collection.pop();
 		}
 	}
+	
+	function checkWin() {
+		
+		// Animate organized stacks
+		function unload() {
+			
+		}
+		
+		let win = true;
+		let sorted = true;
+		let i = 0;
+		let j = 0;
+		let thisCard;
+		let nextCard;
+		
+		// Check stacks
+		while (win && i < 4) {
+			if (stacks[i].getLastCard().value != 13) {
+				win = false;
+			}
+			i++;
+		}
+		
+		// Check piles
+//		i = 0;
+//		while (i < 7) {
+//			
+//			j = piles[i].cards.length - 1
+//			thisCard = piles[i].getLastCard();
+//			
+//			while (sorted && j > 0) {
+//				nextCard = piles[i].cards[j - 1];
+//				
+//				// Check if border, face up, suit, and number for order
+//				if(nextCard.suit == "Border" || (nextCard.faceUp = true && (thisCard.suitValue + nextCard.suitValue) % 2 == 1 && thisCard.value + 1 == nextCard.value)) {
+//					thisCard = nextCard;
+//				} else {
+//					sorted == false;
+//				}
+//				
+//				j--;
+//			}
+//			
+//			i++;
+//		}
+		
+		if (win && !playerWait) {
+			setInterval(function() {
+				alert("You win! Click new game to continue.");
+				playerWait = true;
+			}, 300)
+		}
+	}
 
 	function playGame() {
 
@@ -436,6 +502,7 @@ $(function() {
 			
 		});
 
+		// Shuffle
 		$(".card").click(function() {
 			let card = cardRefs.get(this.id);
 			
@@ -446,6 +513,10 @@ $(function() {
 						mainDeck.shuffle();
 						changeMode("play");
 						$('#message').hide();
+						
+						setInterval(function() {
+							playerWait = false;
+						}, 1600);
 					}
 					
 				case("play"): 
@@ -464,77 +535,163 @@ $(function() {
 			
 		});
 		
+		$("#newGame").click(function() {
+			window.location.reload();
+		});
+		
+		playArea.$selector.dblclick(function() {
+			if (playerWait) {
+				return;
+			}
+			
+			let collection;
+			let card;
+			let i = 0;
+			let j = 0;
+			let foundCard = false;
+			let foundPile = false;
+			let fromPile = false;
+			
+			// Check stacks for card
+			while (!foundCard && i < 7) {
+				card = piles[i].getLastCard();
+				
+				if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2 &&
+					 card.suit != "Border") {
+					foundCard = true;
+					fromPile = true;
+					collection = piles[i];
+				}
+				i++
+			}
+			
+			// Check drawpile
+			if (!foundCard && discard.hasCards()) {
+				card = discard.getLastCard()
+				
+				if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
+					foundCard = true;
+					collection = discard;
+				}
+			}
+			
+			// See if it can be added to pile
+			if (foundCard) {
+				while (!foundPile && j < 4) {
+					// Ace
+					if (stacks[j].getLastCard().suit == "Border" && card.value == 1) {
+						collection.getLastCard().$selector.stop();
+						moveCards(1, collection, stacks[j]);
+						foundPile = true;
+					}
+					// Matching suit of next rank
+					else if (stacks[j].getLastCard().suit == card.suit && 
+									 stacks[j].getLastCard().value + 1 == card.value) {
+						collection.getLastCard().$selector.stop();
+						moveCards(1, collection, stacks[j]);
+						foundPile = true;	 
+					}
+					
+					j++;
+				}
+			}
+			
+			if (foundCard) {
+				checkWin();
+			}
+			
+			
+			// Alter pile accordingly if needed
+			if (fromPile) {
+				if (collection.hasCards()) {
+					
+					setTimeout(function() {
+						collection.getLastCard().flipUp();
+					}, 400);
+					
+				} else {
+					i--;
+					collection.addCard(cardRefs.get("CardBorderPile" + i));
+					collection.getLastCard().show();
+				}
+				
+			}
+		});
+		
 		playArea.$selector.mousedown(function(e) {
 			e.preventDefault();
+			
+			if (animationPlaying || playerWait) {
+				return;
+			}
+
 			let foundCard = false;
 			let card;
-			
+
 			// Check piles to see if they were clicked
 			let i = 0;
 			let j;
 			while (!foundCard && i < 7) {
 				if (piles[i].cards.length && piles[i].getLastCard().suit != "Border") {
 					// face ups are dragable
-					
+
 					j = piles[i].cards.length - 1;
-					
+
 					// Move backward through pile to see where was clicked
 					while(!foundCard && j >= 0) {
 						card = piles[i].cards[j];
-						
+
 						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2 &&
 							 card.faceUp) {
 							card.oldCollection = piles[i];
 							foundCard = true;
 						}
-						
+
 						j--;
 					}
 
 				}
-				
+
 				i++;
 			}
-			
+
 			if (foundCard) {
 				// Reset last inc/dec
 				i--;
 				j++;
-				
+
 				// Adjust for where card was found
-				moveCards(piles[i].cards.length - j, piles[i], drag, true);
+				moveCards(piles[i].cards.length - j, piles[i], drag, true, false);
 				checkPile(i);
 			}
-			
+
 			// Play from drawn cards
 			if (discard.hasCards()) {
 				card = discard.getLastCard();
-				
+
 				if (!foundCard && Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
-					moveCards(1, discard, drag);
+					moveCards(1, discard, drag, false, false);
 					card.oldCollection = discard;
 					foundCard = true;
 				}
 			}
-			
-			
+
+
 			// Draw card
 			if (leftOver.hasCards()) {
 				card = leftOver.getLastCard();
-				
+
 				if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
-					
+
 					// Card there
 					if (card.suit != "Border") {
 						moveCards(1, leftOver, discard);
 						card.flipUp();
-						
+
 						// Check if last card
 						if (!leftOver.hasCards()) {
-							console.log("Drawn out");
-							leftOver.addCard(cardRefs.get("CardBorderLeftOver"));
-							leftOver.getLastCard().flipUp();
-							console.log(leftOver);
+							leftOver.addCard(cardRefs.get("CardBorderLeftOver"), true, false);
+							leftOver.getLastCard().show();
 						}
 
 					} else {
@@ -548,16 +705,6 @@ $(function() {
 				}
 
 			}
-			
-//			if (leftOver.hasCards()) {
-//				card = leftOver.getLastCard();
-//				if (!foundCard && Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
-//					moveCards(1, leftOver, discard);
-//					card.flipUp();
-//				}
-//			}
-			
-
 		});
 		
 		playArea.$selector.mouseup(function(e) {
@@ -577,14 +724,14 @@ $(function() {
 						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
 							
 							if(dragCard.value + 1 == card.value && dragCard.suitValue % 2 != card.suitValue % 2) {
-								moveCards(drag.cards.length, drag, piles[i], true);
+								moveCards(drag.cards.length, drag, piles[i], true, false);
 								nextInCollection(dragCard.oldCollection);
 								foundSpot = true;
 							}
-							// Play kinds in open spaces
+							// Play kings in open spaces
 							else if(dragCard.value == 13 && card.suit == "Border") {
 								piles[i].cards.pop();
-								moveCards(drag.cards.length, drag, piles[i], true);
+								moveCards(drag.cards.length, drag, piles[i], true, false);
 								nextInCollection(dragCard.oldCollection);
 								foundSpot = true;
 							}
@@ -603,14 +750,14 @@ $(function() {
 						// Pile blank add ace
 						if (card.suit == "Border" && dragCard.value == 1) {
 							stacks[i].cards.pop();
-							moveCards(1, drag, stacks[i]);
+							moveCards(1, drag, stacks[i], false, false);
 							nextInCollection(dragCard.oldCollection);
 							foundSpot = true;
 						}
 						
 						// Pile has cards add next of same suit
 						else if (card.suit == dragCard.suit && card.value + 1 == dragCard.value) {
-							moveCards(1, drag, stacks[i]);
+							moveCards(1, drag, stacks[i], false, false);
 							nextInCollection(dragCard.oldCollection);
 							foundSpot = true;
 						}
@@ -620,7 +767,14 @@ $(function() {
 				}
 				
 				if (!foundSpot) {
+					// remove border if moving to empty spot
+					if (dragCard.oldCollection.hasCards() && dragCard.oldCollection.getLastCard().suit == "Border") {
+						dragCard.oldCollection.cards.pop();
+					}
+					
 					moveCards(drag.cards.length, drag, dragCard.oldCollection, true);
+				} else {
+					checkWin();
 				}
 				
 			}
@@ -630,59 +784,7 @@ $(function() {
 		playArea.$selector.mousemove(function(e) {
 			mouseX = e.pageX - playArea.xOffset;
 			mouseY = e.pageY - playArea.yOffset;
-			drag.moveCollection(mouseX, mouseY);
-			
-//			let mouseX = e.pageX - playArea.xOffset;
-//			let mouseY = e.pageY - playArea.yOffset;
-//			let card;
-//			
-//			// TODO: Make more efficient
-//			switch(currentMode) {
-//					
-//				case("deal"):
-//					
-//					if (mainDeck.hasCards()){
-//						card = mainDeck.getLastCard();
-//				
-//						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
-//							card.$selector.css({"outline": "3px solid red"});
-//						} else {
-//							card.$selector.css({"outline": "none"});
-//						}
-//						
-//					}
-//					
-//					break;
-//					
-//				case("play"):
-//					
-//					if (player1Deck.hasCards()){
-//						card = player1Deck.getLastCard();
-//					
-//						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
-//							card.$selector.css({"outline": "3px solid red"});
-//						} else {
-//							card.$selector.css({"outline": "none"});
-//						}
-//					}
-//					
-//					break;
-//					
-//				case("collect"):
-//					if (player1BattleCards.hasCards()) {
-//						card = player1BattleCards.getLastCard();
-//					
-//						if (Math.abs(mouseX - card.x) <= cardWidth / 2 && Math.abs(mouseY - card.y) <= cardHeight / 2) {
-//							
-//							card.$selector.css({"outline": "3px solid red"});
-//						} else {
-//							card.$selector.css({"outline": "none"});
-//						}
-//					}
-//					
-//					break;
-//			}
-
+			drag.moveCollection(mouseX, mouseY);			
 		});
 		
 		
@@ -699,8 +801,8 @@ $(function() {
 	var player2Top = 65
 	var playArea = new PlayArea(900, 700);
 	var mainDeck = new CardCollection(playArea.width / 2, playArea.height / 2);
-	var leftOver = new CardCollection(80, 100);
-	var discard = new CardCollection(220, 100, 0, 0);
+	var leftOver = new CardCollection(80, 110);
+	var discard = new CardCollection(220, 110, 0, 0);
 	var drag = new CardCollection(0, 0, 0, 20);
 	var mouseX;
 	var mouseY;
@@ -717,11 +819,12 @@ $(function() {
 	// Populate card stacks
 	var stacks = [];
 	for(let i = 1; i <= 4; i ++) {
-			stacks.push(new CardCollection(playArea.width / 2 - 60 + 110 * i, 100, 0, 0))
+			stacks.push(new CardCollection(playArea.width / 2 - 60 + 110 * i, 110, 0, 0))
 			}
 	
 	
 	var animationPlaying = false;
+	var playerWait = true;
 
 	var toLoad = 128;
 	var highestZ = 0;

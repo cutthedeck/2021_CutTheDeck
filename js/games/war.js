@@ -151,7 +151,9 @@ $(function() {
 		}
 		
 		shuffle(animate = true) {
-		
+			
+			playerWait = true;
+			
 			if (animate) {
 				
 				let originX = this.cards[0].x;
@@ -195,6 +197,8 @@ $(function() {
 				this.cards[i].$selector.css({zIndex: highestZ});
 				highestZ += 1;
 			}
+			
+			playerWait = false;
 
 		}
 	}
