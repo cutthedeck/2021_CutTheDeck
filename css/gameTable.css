@@ -31,12 +31,12 @@ img {
 }
 
 .btn-group button {
-  background-color: #af684c; 
-  border: 1px solid rgb(128, 51, 0); 
-  color: white; 
-  padding: 10px 24px; 
-  cursor: pointer; 
-  width: 50%; 
+  background-color: #af684c;
+  border: 1px solid rgb(128, 51, 0);
+  color: white;
+  padding: 10px 24px;
+  cursor: pointer;
+  width: 50%;
   display: block;
 	position:relative;
 	right:-830px;
@@ -46,7 +46,7 @@ img {
 }
 
 .btn-group button:not(:last-child) {
-  border-bottom: none; 
+  border-bottom: none;
 }
 
 
@@ -57,15 +57,13 @@ img {
 #boxed{
 	position: relative;
 	left: 590px;
-  height: 450px;
+  height: 300px;
   width: 300px;
-	top: -100px;
   background-color: rgb(106, 190, 134);
   color: #fff;
   opacity: 0.7;
   padding: 20px;
 	border-radius: 10%;
-	text-align: center;
 
 }
 
@@ -77,5 +75,10 @@ h3 {
 	display: block;
 	width: 70px;
 	height: 100px;
+	margin: 0 auto;
+}
+
+#newGame {
+	display: block;
 	margin: 0 auto;
 }
