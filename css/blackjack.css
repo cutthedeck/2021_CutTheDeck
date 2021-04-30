@@ -1,0 +1,44 @@
+#hit, #stand, #deal {
+  display: none;
+  width: 100px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.wrapper {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.flexbox {
+  display: flex;
+  padding: .63rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#main {
+  height: 75%;
+}
+
+#main div {
+  padding: .63rem;
+  text-align: center;
+  height: 101.5%;
+  flex: 1;
+}
+
+#main img {
+  height: 25%;
+  padding: .63rem;
+}
+
+#action div {
+  padding: .63rem;
+}
+
+#player img, #dealer img {
+  height: 9rem;
+}
+

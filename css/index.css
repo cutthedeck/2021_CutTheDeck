@@ -33,6 +33,10 @@ td {
     width: 4.69rem;
   }
 
+  #solitaireLinkImg {
+    width: 175%;
+  }
+
   td {
     height: 0.9rem;
   }
@@ -47,6 +51,10 @@ td {
 
   .linkImg {
     width: 5.63rem;
+  }
+
+  #solitaireLinkImg {
+    width: 175%;
   }
 
   td {
@@ -66,6 +74,10 @@ td {
     width: 6.25rem;
   }
 
+  #solitaireLinkImg {
+    width: 175%;
+  }
+
   td {
     width: 5.75rem;
     height: 1.25rem;
@@ -81,6 +93,10 @@ td {
 
   .linkImg {
     width: 7.5rem;
+  }
+
+  #solitaireLinkImg {
+    width: 175%;
   }
   
   td {
