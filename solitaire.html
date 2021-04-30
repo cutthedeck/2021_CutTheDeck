@@ -8,6 +8,11 @@
 	</head>
 	<body>
 		<ctd-header></ctd-header>
+			<!-- Adding panel for chat and Rule set-->
+	<div class="btn-group">
+		<button>Chat</button>
+		<button class="fade">Rules</button>
+	</div>
 
 		
 		<div id = "gameTable">
@@ -17,9 +22,23 @@
 			</div>
 		</div>
 		<button type="button" id="newGame">New Game</button>
+		<div id="boxed" style="height: 200px;top:-950px;left:500px;">
+			<h4>Rules:</h4>
+			<p>The goal of the game is to move all of the cards to the "foundations" these are four additional stacks of cards.
+				 At the start of the game these stacks are empty. 
+				Each stack represents a suit (hearts, clubs, etc). 
+				They must be stacked by suit and in order, starting with the Ace, 
+				then the 2, 3, 4,…..ending with the Queen and then King.
+
+			</p>
+	
+		</div>
+
+
 		<ctd-footer></ctd-footer>
 		<script type=module src=js/template.js defer></script>
 		<script src = "js/jquery-3.6.0.min.js"></script>
 		<script src = "js/games/solitaire.js"></script>
+		<script src="js/rules.js"></script>
 	</body>
 </html>

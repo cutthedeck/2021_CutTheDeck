@@ -1,38 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>War</title>
-		<link rel="stylesheet" type="text/css" href="css/gameTable.css"/>
-		<link rel="stylesheet" type="text/css" href="css/template.css"/>
-	</head>
-	<body>
-		<ctd-header></ctd-header>
 
-		<!-- Adding panel for chat and Rule set-->
-		<div class="btn-group">
-			<button>Chat</button>
-			<button class="fade">Rules</button>
+<head>
+	<meta charset="utf-8">
+	<title>War</title>
+	<link rel="stylesheet" type="text/css" href="css/gameTable.css" />
+	<link rel="stylesheet" type="text/css" href="css/template.css" />
+</head>
+
+<body>
+	<ctd-header></ctd-header>
+
+	<!-- Adding panel for chat and Rule set-->
+	<div class="btn-group">
+		<button>Chat</button>
+		<button class="fade">Rules</button>
+	</div>
+
+
+	<div id="gameTable">
+		<h3>War</h3>
+		<div id="message">
+			Click on the deck to begin
 		</div>
+		<img src="imgs/img_war_link.png" class="icon">
 
 
-		<div id = "gameTable">
-			<h3>War</h3>
-			<div id = "message">
-				Click on the deck to begin
-			</div>
-			<img src = "imgs/img_war_link.png" class = "icon">
-			<div id="boxed">
-				Rules here
-			</div>
+	</div>
+	<div id="boxed">
+		<p>
+			The goal is to be the first player to win all 52 cards<br></p>
+		<p>THE DEAL:
+			The deck is divided evenly, with each player receiving 26 cards, dealt one at a time, face down. Anyone may deal
+			first.
+			Each player places their stack of cards face down, in front of them.<br></p>
 
-		</div>
-		
-		<ctd-footer></ctd-footer>
-		<script type=module src=js/template.js defer></script>
-		<script src = "js/jquery-3.6.0.min.js"></script>
-		<script src = "js/games/war.js"></script>
-		<script src = "js/rules.js"></script>
-		
-	</body>
+		THE PLAY: Each player turns up a card at the same time and the player with the higher card takes both cards and puts
+		them,
+		face down, on the bottom of his stack.
+
+		<p>If the cards are the same rank, it is War.<br><br>
+			Each player turns up one card face down and one card face up.
+			The player with the higher cards takes both piles (six cards).
+			If the turned-up cards are again the same rank,
+			each player places another card face down and turns another card face up.<br><br>
+			The player with the higher card takes all 10 cards, and so on.</p>
+
+		<p>HOW TO KEEP SCORE:
+			The game ends when one player has won all the cards.</p>
+
+	</div>
+
+	<ctd-footer></ctd-footer>
+	<script type=module src=js/template.js defer></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/games/war.js"></script>
+	<script src="js/rules.js"></script>
+
+</body>
+
 </html>

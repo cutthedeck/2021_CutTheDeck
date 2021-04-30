@@ -8,7 +8,6 @@
 }
 
 img {
-	user-drag: none; 
 	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-drag: none;
@@ -31,16 +30,42 @@ img {
 	text-align: center;
 }
 
+.btn-group button {
+  background-color: #af684c;
+  border: 1px solid rgb(128, 51, 0);
+  color: white;
+  padding: 10px 24px;
+  cursor: pointer;
+  width: 50%;
+	position:relative;
+	right:-955px;
+	top: 30px;
+	width: 90px;
+	border-radius: 10%;
+	z-index: 10;
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none;
+}
+
+
+.btn-group button:hover {
+  background-color: #8e723e;
+}
+
 #boxed{
 	position: relative;
-	left: 590px;
-  height: 300px;
+	left: 829px;
+  height: 500px;
+	top: -580px;
   width: 300px;
   background-color: rgb(106, 190, 134);
   color: #fff;
-  opacity: 0.7;
+  opacity: .9;
   padding: 20px;
 	border-radius: 10%;
+	z-index: 100;
 
 }
 
