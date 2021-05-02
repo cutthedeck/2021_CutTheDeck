@@ -1,90 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<title>War</title>
-	<link rel="stylesheet" type="text/css" href="css/gameTable.css" />
-	<link rel="stylesheet" type="text/css" href="css/template.css" />
-</head>
-
-<body>
-	<ctd-header></ctd-header>
-
-	<!-- Adding panel for chat and Rule set-->
-	<div class="btn-group">
-		<button class="fade_chat">Chat</button>
-		<button class="fade">Rules</button>
-	</div>
-
-
-	<div id="gameTable">
-		<h3>War</h3>
-		<div id="message">
-			Click on the deck to begin
+	<head>
+		<meta charset="utf-8">
+		<title>War</title>
+		<link rel="stylesheet" type="text/css" href="css/gameTable.css"/>
+		<link rel="stylesheet" type="text/css" href="css/template.css"/>
+	</head>
+	<body>
+		<ctd-header></ctd-header>
+		<div class="btn-group">
+			<button class="fade_chat">Chat</button>
+			<button class="fade">Rules</button>
 		</div>
-		<img src="imgs/img_war_link.png" class="icon">
+		<div id = "gameTable">
+					<!-- Adding panel for chat and Rule set-->
 
 
-	</div>
-	<div id="boxed">
-		<p>
-			The goal is to be the first player to win all 52 cards<br></p>
-		<p>THE DEAL:
-			The deck is divided evenly, with each player receiving 26 cards, dealt one at a time, face down. Anyone may deal
-			first.
-			Each player places their stack of cards face down, in front of them.<br></p>
+			<div id = "message">
+				Click on the deck to begin
+			</div>
 
-		THE PLAY: Each player turns up a card at the same time and the player with the higher card takes both cards and puts
-		them,
-		face down, on the bottom of his stack.
-
-		<p>If the cards are the same rank, it is War.<br><br>
-			Each player turns up one card face down and one card face up.
-			The player with the higher cards takes both piles (six cards).
-			If the turned-up cards are again the same rank,
-			each player places another card face down and turns another card face up.<br><br>
-			The player with the higher card takes all 10 cards, and so on.</p>
-
-		<p>HOW TO KEEP SCORE:
-			The game ends when one player has won all the cards.</p>
+			<img src = "imgs/img_war_link.png" class = "war_icon">
+			<div id="rules">
+				Rules here
+		</div>
 
 	</div>
 
-  <div class="chat-container">
-    <header class="chat-header">
-      <p hidden id="user"></p>
-      <h1><i class="fas fa-smile"></i> Game Chat</h1>
-    </header>
-    <main class="chat-main">
-      <div class="chat-sidebar">
-        <h3><i class="fas fa-comments"></i> Room Name:</h3>
-        <h2 id="room-name"></h2>
-        <h3><i class="fas fa-users"></i> Users</h3>
-        <ul id="users"></ul>
+
+		<div class="chat-container">
+      <header class="chat-header">
+				<p hidden id="user"></p>
+        <h1><i class="fas fa-smile"></i> Game Chat</h1>
+      </header>
+      <main class="chat-main">
+        <div class="chat-sidebar">
+          <h3><i class="fas fa-comments"></i> Room Name:</h3>
+          <h2 id="room-name"></h2>
+          <h3><i class="fas fa-users"></i> Users</h3>
+          <ul id="users"></ul>
+        </div>
+        <div class="chat-messages"></div>
+      </main>
+      <div class="chat-form-container">
+        <form id="chat-form">
+          <input
+            id="msg"
+            type="text"
+            placeholder="Enter Message"
+            required
+            autocomplete="off"
+          />
+          <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+        </form>
       </div>
-      <div class="chat-messages"></div>
-    </main>
-    <div class="chat-form-container">
-      <form id="chat-form">
-        <input
-          id="msg"
-          type="text"
-          placeholder="Enter Message"
-          required
-          autocomplete="off"
-        />
-        <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
-      </form>
-    </div>
     </div>
 
-	<ctd-footer></ctd-footer>
-	<script type=module src=js/template.js defer></script>
-	<script src="js/jquery-3.6.0.min.js"></script>
-	<script src="js/games/war.js"></script>
-	<script src="js/rules.js"></script>
-
-</body>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+      integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+		
+		<ctd-footer></ctd-footer>
+		<script type=module src=js/template.js defer></script>
+		<script src = "js/jquery-3.6.0.min.js"></script>
+		<script src = "js/games/war.js"></script>
+		<script src = "js/rules.js"></script>
+		
+	</body>
 </html>

@@ -3,7 +3,7 @@ $(function() {
 
   // function for showing rules of a game
   $(" .fade").click(function(){
-    $(" #boxed").fadeToggle("slow");
+    $(" #rules").fadeToggle("slow");
   });
 
   //Display Chat inside a game

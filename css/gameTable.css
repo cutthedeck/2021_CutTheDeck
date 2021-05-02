@@ -1,11 +1,95 @@
-
 :root {
 	--dark-color-a: #ff9e66;
 	--dark-color-b: #626364;
-	--light-color: #e6e9ff;
+	--light-color: #2c3ba8;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 }
+
+#gameTable {
+	position: relative;
+	margin: 0 auto;
+	right: -4em;
+	border-radius: 50px;
+	background-color: forestgreen;
+	border: 5px solid brown;
+  overflow: hidden;
+}
+
+img {
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.card {
+	position: absolute;
+	top: 80;
+	padding: none;
+	border: none;
+	outline-style: dashed;
+}
+
+#message {
+	position: relative;
+	margin: auto;
+	top: 80;
+	text-align: center;
+}
+
+.btn-group button {
+  background-color: #af684c; 
+  border: 1px solid rgb(128, 51, 0); 
+  color: white; 
+  padding: 10px 24px; 
+  cursor: pointer; 
+  width: 50%; 
+
+
+	width: 90px;
+	border-radius: 10%;
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; 
+}
+
+
+.btn-group button:hover {
+  background-color: #8e723e;
+}
+
+#rules{
+	position: relative;
+	left: 590px;
+  height: 450px;
+  width: 300px;
+	top: -100px;
+  background-color: rgb(106, 190, 134);
+  color: #fff;
+  opacity: 0.7;
+  padding: 20px;
+	border-radius: 10%;
+	text-align: center;
+	display: none;
+
+
+}
+
+h3 {
+	text-align: center;
+}
+
+.war_icon {
+	display: block;
+	width: 70px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+
 ul {
 	list-style: none;
 }
@@ -27,14 +111,15 @@ a {
 
 .chat-container {
 	position: relative;
-	max-width: 900px;
-	width: 400px;
+	max-width: 600px;
+	width: 600px;
+	right: -700px;
 	background: #fff;
 	margin: 30px auto;
+	z-index: 10;
+	top: -50em;
+	border-radius: 5%;
 	display: none;
-	z-index: 100;
-	top: -40em;
-	right: 5em;
 }
 
 .chat-header {
@@ -46,7 +131,6 @@ a {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	height: 10px;
 }
 
 .chat-main {
@@ -79,6 +163,7 @@ a {
 .chat-messages {
 	padding: 30px;
 	max-height: 500px;
+	max-width: 900px;
 	overflow-y: scroll;
 }
 
@@ -178,90 +263,4 @@ a {
 	.chat-sidebar {
 		display: none;
 	}
-}
-#gameTable {
-	position: relative;
-	margin: 0 auto;
-	border-radius: 50px;
-	background-color: forestgreen;
-	border: 5px solid brown;
-  overflow: hidden;
-}
-
-img {
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-drag: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-}
-
-.card {
-	position: absolute;
-	top: 80;
-	padding: none;
-	border: none;
-	outline-style: dashed;
-}
-
-#message {
-	position: relative;
-	margin: auto;
-	top: 80;
-	text-align: center;
-}
-
-.btn-group button {
-  background-color: #af684c;
-  border: 1px solid rgb(128, 51, 0);
-  color: white;
-  padding: 10px 24px;
-  cursor: pointer;
-  width: 50%;
-	position:relative;
-	right:-955px;
-	top: 30px;
-	width: 90px;
-	border-radius: 10%;
-	z-index: 10;
-}
-
-.btn-group button:not(:last-child) {
-  border-bottom: none;
-}
-
-
-.btn-group button:hover {
-  background-color: #8e723e;
-}
-
-#boxed{
-	position: relative;
-	left: 829px;
-  height: 500px;
-	top: -580px;
-  width: 300px;
-  background-color: rgb(106, 190, 134);
-  color: #fff;
-  opacity: .9;
-  padding: 20px;
-	border-radius: 10%;
-	z-index: 100;
-display: none;
-}
-
-h3 {
-	text-align: center;
-}
-
-.icon {
-	display: block;
-	width: 70px;
-	height: 100px;
-	margin: 0 auto;
-}
-
-#newGame {
-	display: block;
-	margin: 0 auto;
 }
