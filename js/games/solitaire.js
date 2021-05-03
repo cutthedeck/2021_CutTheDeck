@@ -481,10 +481,11 @@ $(function() {
 //			i++;
 //		}
 		
-		if (win && !playerWait) {
-			setInterval(function() {
+		if ((win) && !playerWait) {
+			let alertInterval = setInterval(function() {
 				alert("You win! Click new game to continue.");
 				playerWait = true;
+				clearInterval(alertInterval);
 			}, 300)
 		}
 	}
@@ -514,10 +515,13 @@ $(function() {
 						changeMode("play");
 						$('#message').hide();
 						
-						setInterval(function() {
+						let dealInterval = setInterval(function() {
 							playerWait = false;
+							clearInterval(dealInterval);
 						}, 1600);
 					}
+					
+					break;
 					
 				case("play"): 
 					
