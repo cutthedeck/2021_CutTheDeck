@@ -18,5 +18,9 @@ class CtdFooter extends HTMLElement {
   }
 }
 
+$('#navHome').click(function() {
+	window.location.href = "index.html";
+});
+
 customElements.define('ctd-header', CtdHeader)
 customElements.define('ctd-footer', CtdFooter)
