@@ -25,7 +25,8 @@ $(function() {
 
       window.localStorage.setItem('user', user);
       console.log(localStorage.getItem('user'));
-      $(" .chat-container").fadeToggle("slow").draggable();
+      location.reload();
+      return false;
     }
     else{
       alert("Must enter a user name before using the chat");
