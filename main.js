@@ -2,14 +2,14 @@ const chatForm = document.getElementById('chat-form');
 const chatMessage = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
-
+const username = window.localStorage.getItem('user');
+console.log(username);
+const room = document.getElementById('room').innerText;
 
 
 
 // get the user name and room from the url
-const {username, room} = Qs.parse(location.search,{
-  ignoreQueryPrefix: true
-});
+
 
 // checking to see if the room and username were grabbed by the Qs library
 console.log(username, room);
@@ -61,7 +61,7 @@ function outputMessage(message){
   if(message.username == username){
     const div = document.createElement('div');
     div.classList.add('message');
-    div.setAttribute("style", "max-width: 250px;position:relative;right: -550px;font-size:.95em;");
+    div.setAttribute("style", "max-width: 160px;position:relative;right: -200px;font-size:.95em;");
     div.innerHTML = `<p class="meta">${message.username}<span> ${message.time}</span></p>
     <p class="text"> ${message.text} </p>`;
     document.querySelector('.chat-messages').appendChild(div);
@@ -77,7 +77,7 @@ function outputMessage(message){
   }else {
     const div = document.createElement('div');
     div.classList.add('message');
-    div.setAttribute("style", "max-width: 250px;relative;left: -260px;");
+    div.setAttribute("style", "max-width: 160px;relative;left: 2px;color:orange;");
     div.innerHTML = `<p class="meta">${message.username}<span> ${message.time}</span></p>
     <p class="text"> ${message.text} </p>`;
     document.querySelector('.chat-messages').appendChild(div);
@@ -85,6 +85,7 @@ function outputMessage(message){
 
 }
 
+//"style", "max-width: 160px;position:relative;right: -200px;font-size:.95em;
 
 
 // add room/name
