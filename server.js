@@ -36,14 +36,16 @@ io.on('connection', socket => {
         'message',
         formatMessage(Admin, `${user.username} has joined the chat`)
       );
-    }
+    
 
     // Send users and room info
     io.to(user.room).emit('roomUsers', {
       room: user.room,
       users: getRoomUsers(user.room)
     });
+  }
   });
+
 
   // Listen for chat Message
   socket.on('chatMessage', msg => {
