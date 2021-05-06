@@ -1,7 +1,7 @@
 :root {
 	--dark-color-a: #ff9e66;
-	--dark-color-b: #585555;
-	--light-color: #4f5ecf;
+	--dark-color-b: #000000;
+	--light-color: #334bff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
 }
