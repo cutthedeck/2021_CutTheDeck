@@ -255,6 +255,7 @@ function showScore(active) {
   if(active["Score"] > 21) {
     // display "Bust!" text in place of score
     document.querySelector(active["ScoreSpan"]).textContent = "Bust!";
+		saveResult(false, "blackjack");
     if(active == PLAYER) {
       // if player bust show the game was lost
       document.querySelector("#result").textContent = "You lost!";
@@ -330,6 +331,7 @@ function computeWinner() {
   } else if(PLAYER["Score"] > 21) {
     // dealer wins
     winner = DEALER;
+		
   };
 
   return winner;
@@ -342,8 +344,10 @@ function showResult(winner) {
   if (hand["turnsOver"] == true) {
     if(winner == PLAYER) { // show player victory
       message = "You win!";
+			saveResult(true, "blackjack");
     } else if(winner == DEALER) { // show dealer victory
       message = "You lost!";
+			saveResult(false, "blackjack");
     } else { // show tie
       message = "Push!";
     };

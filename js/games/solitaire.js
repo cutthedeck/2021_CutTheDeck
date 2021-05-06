@@ -509,6 +509,7 @@ $(function() {
 		if ((win) && !playerWait) {
 			let alertInterval = setInterval(function() {
 				alert("You win! Click new game to continue.");
+				saveResult(true, "solitaire");
 				playerWait = true;
 				clearInterval(alertInterval);
 			}, 300)
@@ -576,6 +577,7 @@ $(function() {
 		});
 		
 		$("#newGame").click(function() {
+			saveResult(false, "solitaire");
 			window.location.reload();
 		});
 		

@@ -289,11 +289,13 @@ $(function() {
 			} else {
 				$("#message").html("You lose! \n Click a card to play again!");
 				$("#message").show();
+				saveResult(false, "war");
 				changeMode("restart");
 			}
 		} else if (player2Deck.cards.length + player2Deck.cards.length == 0) {
 			$("#message").html("You win! \n Click a card to play again!");
 			$("#message").show();
+			saveResult(true, "war");
 			changeMode("restart");
 		}
 	}
@@ -336,6 +338,7 @@ $(function() {
 				break;
 		}
 	}
+
 
 	function playGame() {
 
@@ -558,5 +561,6 @@ $(function() {
 	}, 1);
 
 });
+
 
 
