@@ -1,5 +1,3 @@
-
-
 $(function() {
 	
 	class PlayArea {
@@ -213,6 +211,26 @@ $(function() {
 		// Set id to access
 		let image;
 		let backImage;
+
+    let num = 0;
+    let radios = document.getElementsByName("card-back"); // list of radio buttons
+    let val = localStorage.getItem('card-back'); // local storage value
+    for(var i=0;i<radios.length;i++){
+
+      if(radios[i].value == val) {
+        radios[i].checked = true;
+        num = i;
+
+        if(radios[i].checked == true) {
+          window.localStorage.setItem('card-back', this.value);
+        }; // marking the required radio as checked
+ 
+      } else {
+        radios[num].checked = true;
+        if(radios[i].checked == true) {
+        };
+      }
+    }
 		
 		numberOfDecks = 1;
 
@@ -224,7 +242,12 @@ $(function() {
 					image.onload = loaded();
 					backImage.onload = loaded();
 					image.src = "imgs/sprites/card" + suit + value + ".png";
-					backImage.src = "imgs/sprites/cardBack.png";
+					
+          if(val == "undefined") {
+            backImage.src = "imgs/sprites/cardBack.png";           
+          } else {
+            backImage.src = "imgs/sprites/cardBack_" + val + ".png";
+          }
 					
 					cardImages.set(suit + value, image);
 					cardImages.set(suit + value + "Back", backImage);
@@ -315,7 +338,18 @@ $(function() {
 	}
 
 	function playGame() {
-		
+
+    $("#back-btn").click(function(){
+      let val = localStorage.getItem('card-back');
+      cardRefs.forEach(card => {
+        if(val == "undefined") {
+          card.backImage.src = "imgs/sprites/cardBack.png";           
+        } else {
+          card.backImage.src = "imgs/sprites/cardBack_" + val + ".png";
+        }
+      });
+    });
+    
 		cardRefs.forEach(card => {
 			card.show();
 			card.$selector.css({zIndex: highestZ});

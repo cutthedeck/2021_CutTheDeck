@@ -75,7 +75,67 @@ img {
 	width: 940px;
 	left:240px;
 	border-radius: 2%;
+}
 
+#options {
+  position: absolute;
+  height: 200px;
+  width: 300px;
+  top: 350px;
+  right: 200px;
+  background-color: rgb(106, 190, 134);
+  color: #fff;
+  padding: 20px;
+	border-radius: 10%;
+	z-index: 500;
+	display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.display {
+  display: block;
+  padding: 20px;
+  position: fixed;
+  background: url('/imgs/img_background.png');
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+
+#overlay button {
+  background: none;
+  border: none;
+  height: 100px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+#overlay button img {
+  height: 100%;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+  margin: 15px;
+}
+
+/* CHECKED STYLES */
+input[type=radio]:checked + img {
+  outline: 2px solid #f00;
 }
 
 #boxed h4{
