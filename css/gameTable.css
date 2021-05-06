@@ -62,15 +62,24 @@ img {
   background-color: #8e723e;
 }
 
-#boxed{
-  width: 300px;
+#boxed{	
   background-color: rgb(106, 190, 134);
   color: #fff;
-  padding: 20px;
+  padding: 10px;
 	border-radius: 10%;
 	z-index: 100;
 	display: none;
+	position: absolute;
+	height: 240px;
+	top:4px;
+	width: 940px;
+	left:240px;
+	border-radius: 2%;
 
+}
+
+#boxed h4{
+	text-align: center;
 }
 
 h3 {
