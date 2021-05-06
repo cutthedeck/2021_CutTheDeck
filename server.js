@@ -60,7 +60,7 @@ io.on('connection', socket => {
   socket.on('disconnect', () => {
     const user = userLeave(socket.id);
 
-    if (user) {
+    if (user.username) {
       io.to(user.room).emit(
         'message',
         formatMessage(Admin, `${user.username} has left the chat`)
