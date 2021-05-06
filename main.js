@@ -70,14 +70,14 @@ function outputMessage(message){
     const div = document.createElement('div');
     div.setAttribute("style", "max-width: 500px;text-align: center;background-color:red; font-size:.95em;position:relative;right: -20px;");
     div.classList.add('message');
-    div.innerHTML = `<p class="meta">${message.username}sdsdsds<span> ${message.time}</span></p>
+    div.innerHTML = `<p class="meta">${message.username}x<span> ${message.time}</span></p>
     <p class="text"> ${message.text} </p>`;
     document.querySelector('.chat-messages').appendChild(div);
 
   }else {
     const div = document.createElement('div');
     div.classList.add('message');
-    div.setAttribute("style", "max-width: 160px;relative;left: 2px;color:orange;");
+    div.setAttribute("style", "max-width: 160px;relative;left: 2px;background-color:orange");
     div.innerHTML = `<p class="meta">${message.username}<span> ${message.time}</span></p>
     <p class="text"> ${message.text} </p>`;
     document.querySelector('.chat-messages').appendChild(div);
