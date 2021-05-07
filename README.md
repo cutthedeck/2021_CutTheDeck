@@ -15,3 +15,9 @@ https://cutthedeck.herokuapp.com/
 > Rules have been added to the game pages
 > Chat has been migrated to game pages, though temporarily disabled
 https://cutthedeck.herokuapp.com/
+
+# Release 3
+> Focuses on fourth deployment with options menu added
+> Stats can now be tracked while playing
+> Chat has been fully enabled
+https://cutthedeck.herokuapp.com/
