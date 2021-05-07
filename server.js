@@ -25,11 +25,10 @@ io.on('connection', socket => {
 
     socket.join(user.room);
 
-    // Welcome current user
-    socket.emit('message', formatMessage(Admin, `Welcome to ${user.room} Game Chat Room`));
-
     // Broadcast when a user connects
     if(user.username){
+          // Welcome current user
+    socket.emit('message', formatMessage(Admin, `Welcome to ${user.room} Game Chat Room`));
     socket.broadcast
       .to(user.room)
       .emit(
