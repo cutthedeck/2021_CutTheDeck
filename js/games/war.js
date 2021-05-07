@@ -243,7 +243,7 @@ $(function() {
 					backImage.onload = loaded();
 					image.src = "imgs/sprites/card" + suit + value + ".png";
 					
-          if(val == "undefined") {
+          if(!val) {
             backImage.src = "imgs/sprites/cardBack.png";           
           } else {
             backImage.src = "imgs/sprites/cardBack_" + val + ".png";
