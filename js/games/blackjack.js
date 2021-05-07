@@ -255,13 +255,14 @@ function showScore(active) {
   if(active["Score"] > 21) {
     // display "Bust!" text in place of score
     document.querySelector(active["ScoreSpan"]).textContent = "Bust!";
-		saveResult(false, "blackjack");
     if(active == PLAYER) {
       // if player bust show the game was lost
       document.querySelector("#result").textContent = "You lost!";
+			saveResult(false, "blackjack");
     } else if(active == DEALER) {
       // if dealer bust show the game was won
       document.querySelector("#result").textContent = "You win!";
+			saveResult(true, "blackjack");
     }
       // display the deal button so a new hand can be dealt
       document.getElementById("deal").style.display = "block";
