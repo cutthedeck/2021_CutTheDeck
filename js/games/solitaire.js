@@ -831,6 +831,11 @@ $(function() {
 		
 		
 	}
+	
+	// Reset mouse offsets on resize
+	$( window ).resize(function(){
+		playArea.setOffsets();
+	})
 
 	// Global vars
 	var cardImages = new Map();

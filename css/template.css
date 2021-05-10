@@ -25,7 +25,7 @@ header {
 	left: 2rem;
 	width: 100px;
 	height: 100px;
-	z-index: 10;
+	z-index: 1000000;
 }
 
 #navHome:hover {
