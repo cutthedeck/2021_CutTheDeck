@@ -1,18 +1,18 @@
 let hand = {"Player": {"ScoreSpan" : "#playerResult",
                        "Div" : "#player",
                        "Score" : 0},
-                       "HasAce" : false,
-                       "RemovedHighAce" : false,
+                       "AceTally" : 0,
+                       "RemovalTally" : 0,
             "Dealer": {"ScoreSpan" : "#dealerResult",
                        "Div" : "#dealer",
                        "Score" : 0},
-                       "HasAce" : false,
-                       "RemovedHighAce" : false,
+                       "AceTally" : 0,
+                       "RemovalTally" : 0,
             "Cards": ["SpadesA",
                       "Spades2",
                       "Spades3",
                       "Spades4",
-                      "Spades5",
+                       "Spades5",
                       "Spades6",
                       "Spades7",
                       "Spades8",
@@ -59,7 +59,8 @@ let hand = {"Player": {"ScoreSpan" : "#playerResult",
                       "Diamonds10",
                       "DiamondsJ",
                       "DiamondsQ",
-                      "DiamondsK"],
+                      "DiamondsK"
+                    ],
             "cardsMap": {"SpadesA" : 1,
                           "Spades2" : 2,
                           "Spades3" : 3,
@@ -184,10 +185,10 @@ function deal() {
     DEALER["Score"] = 0;
 
     // reset ace tracking
-    PLAYER["HasAce"] = false;
-    DEALER["HasAce"] = false;
-    PLAYER["RemovedHighAce"] = false;
-    DEALER["RemovedHighAce"] = false;
+    PLAYER["AceTally"] = 0;
+    PLAYER["RemovalTally"] = 0;
+    DEALER["AceTally"] = 0;
+    DEALER["RemovalTally"] = 0;
 
     // reflect the reset score for the player and dealer
     document.querySelector("#playerResult").textContent = 0;
@@ -222,24 +223,21 @@ function updateScore(card, active) {
   // check if the active player or dealer drew an ace
   if(card == "SpadesA" || card == "ClubsA" || card == "HeartsA" || card == "DiamondsA") {
     // track ace in hand
-    if(active["HasAce"] == false) {
-      active["HasAce"] = true;
-    }
+    active["AceTally"] += 1;
     // give ace a value of 11 if it will not bust the active player or dealer
     if((active["Score"] + 11) <= 21) {
       active["Score"] += 11;
     } else { // if a high ace would bust active player or dealer give default value of 1
       // and track that a high ace would cause a bust
-      active["RemovedHighAce"] = true;
+      active["RemovalTally"] += 1;
       active["Score"] += CARDSMAP[card];
     }
   // check if the "active" has received a high (11) ace, if a high ace has previously been
   // converted to a low (1) ace, and if the current pulled card would cause a bust.
-  } else if(active["HasAce"] == true && ((active["Score"] + CARDSMAP[card]) > 21) && active["RemovedHighAce"] == false) {
+  } else if(active["AceTally"] > active["RemovalTally"] && ((active["Score"] + CARDSMAP[card]) > 21)) {
     // remove high ace bonus and track removal
     active["Score"] = active["Score"] + CARDSMAP[card] - 10;
-    active["RemovedHighAce"] = true;
-    active["HasAce"] = false;
+    active["RemovalTally"] += 1;
   // else player did not receive an Ace; add value of current card to score
   } else {
     active["Score"] += CARDSMAP[card];
@@ -317,10 +315,14 @@ function computeWinner() {
   // if player's score is less than or equal to 21
   if(PLAYER["Score"] <= 21) {
     // if player's score is higher than the dealer or if the dealer bust
-    if(PLAYER["Score"] > DEALER["Score"] || DEALER["Score"] > 21) {
+    if(PLAYER["Score"] > DEALER["Score"]) {
       // player wins
       winner = PLAYER;
     // else if the player score is less than the dealer
+    } else if(DEALER["Score"] > 21) {
+      // player wins
+      winner = PLAYER;
+    // else if the player and dealer have the same score
     } else if(PLAYER["Score"] < DEALER["Score"]) {
       // dealer wins
       winner = DEALER;

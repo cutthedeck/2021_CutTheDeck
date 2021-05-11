@@ -290,7 +290,7 @@ $(function() {
 					backImage.onload = loaded();
 					image.src = "imgs/sprites/card" + suit + value + ".png";
 					
-          if(!val) {
+          if((!val || val == "undefined")) {
             backImage.src = "imgs/sprites/cardBack.png";           
           } else {
             backImage.src = "imgs/sprites/cardBack_" + val + ".png";

@@ -107,6 +107,10 @@ img {
   z-index: 999;
 }
 
+#overlay {
+  overflow-y: scroll;
+}
+
 #overlay button {
   background: none;
   border: none;
@@ -327,6 +331,30 @@ a {
 	width: 100%;
 }
 
+
+
+/* for mobile */
+@media screen and (max-width: 599px) { 
+  #overlay button img {
+    height: 60%;
+  }
+
+  [type=radio] + img {
+    height: 10%;
+  }
+}
+
+/* for tablet portrait up*/
+@media screen and (min-width: 600px) {
+  #overlay button img {
+    height: 80%;
+  }
+
+  [type=radio] + img {
+    height: 15%;
+  }
+}
+
 @media (max-width: 700px) {
 	.chat-main {
 		display: block;
@@ -335,4 +363,26 @@ a {
 	.chat-sidebar {
 		display: none;
 	}
+}
+/* for tablet landscape up */
+@media screen and (min-width: 900px) { 
+  #overlay button img {
+    height: 90%;
+  }
+
+  [type=radio] + img {
+    height: 20%;
+  }
+}
+
+/* for desktop up */
+@media screen and (min-width: 1200px) { 
+  #overlay button img {
+    height: 100%;
+  }
+
+  [type=radio] + img {
+    height: 25%;
+  }
+
 }

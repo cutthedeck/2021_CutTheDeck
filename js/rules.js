@@ -62,8 +62,8 @@ return false;
       $(" #options").fadeToggle("slow");
     }
   });
-
   $("#change-card-back").click(function(){
+    $("#navHome").css("display", "none");
     $("#overlay").removeClass("hide");
     $("#overlay").addClass("display");
   });
@@ -71,6 +71,7 @@ return false;
   $("#back-btn").click(function(){
     $("#overlay").removeClass("display");
     $("#overlay").addClass("hide");
+    $("#navHome").css("display", "block");
     if($("#options").css('display') == "block") {
       $("#options").css("display", "none");
     }
