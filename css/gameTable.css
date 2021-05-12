@@ -189,7 +189,11 @@ a {
 	top: -52em;
 		background: #fff;
 	margin: 30px auto;
-	z-index: 10;
+<<<<<<< Updated upstream
+	z-index: 1000000000;
+=======
+	z-index: 100000000000;
+>>>>>>> Stashed changes
 
 	border-radius: 5%;
 	display: none;
