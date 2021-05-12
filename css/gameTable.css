@@ -189,7 +189,7 @@ a {
 	top: -52em;
 		background: #fff;
 	margin: 30px auto;
-	z-index: 10;
+	z-index: 1000000000;
 
 	border-radius: 5%;
 	display: none;
