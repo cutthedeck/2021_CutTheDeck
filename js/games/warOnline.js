@@ -250,8 +250,10 @@ $(function() {
 				alert("It's a tie");
 			} else if (winnerNumber == playerNumber) {
 				alert("You win");
+				saveResult(true, "warOnline");
 			} else {
 				alert("You lose!");
+				saveResult(false, "warOnline");
 			}
 			changeMode("replay");
 			replayMenu();
@@ -264,6 +266,7 @@ $(function() {
 			alert("Other player disconnected");
 		} else {
 			alert("Other player disconnected, you win!");
+			saveResult(true, "warOnline");
 		}
 
 		location.reload();
@@ -489,7 +492,7 @@ $(function() {
 					backImage.onload = loaded();
 					image.src = "imgs/sprites/card" + suit + value + ".png";
 					
-          if(true || !val) {
+          if(!val || val == "undefined") {
             backImage.src = "imgs/sprites/cardBack.png";           
           } else {
             backImage.src = "imgs/sprites/cardBack_" + val + ".png";
