@@ -530,6 +530,11 @@ $(function() {
 		playArea.setOffsets();
 	})
 
+	$('#gameMode').click(function() {
+		window.localStorage.setItem("warMode", "multiplayer");
+		window.location.href = "warOnline.html";
+	});
+
 	// Global vars
 	var cardImages = new Map();
 	var cardRefs = new Map();
