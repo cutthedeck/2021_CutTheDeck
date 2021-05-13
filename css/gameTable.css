@@ -36,6 +36,7 @@ img {
 	margin: auto;
 	top: 80;
 	text-align: center;
+	z-index: 1000001;
 }
 
 .btn-group button {
