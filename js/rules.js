@@ -44,18 +44,7 @@ return false;
 
   // function for showing options of a game
   $(" .fade-options").click(function(){
-
-    if($(" .chat-container").css('display') == "block" || $(" #boxed").css('display') == "block"){
-      if($(" .chat-container").css('display') == "block") {
-        $(" .chat-container").fadeToggle("fast");
-      }
-      if($(" #boxed").css('display')=='block'){
-        $(" #boxed").fadeToggle("fast");
-      }
-      $(" #options").fadeToggle("slow");  
-    } else {
-      $(" #options").fadeToggle("slow");
-    }
+    $(" #options").fadeToggle("slow");  
   });
   $("#change-card-back").click(function(){
     $("#navHome").css("display", "none");
