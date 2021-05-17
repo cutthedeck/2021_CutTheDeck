@@ -39,23 +39,33 @@ img {
 	z-index: 1000001;
 }
 
-.btn-group button {
-  background-color: #af684c;
-  border: 1px solid rgb(128, 51, 0);
-  color: white;
-  padding: 10px 24px;
-  cursor: pointer;
-  width: 50%;
-	position:relative;
-	right:-955px;
-	top: 30px;
-	width: 90px;
-	border-radius: 10%;
+#gameGroup {
+	position: relative;
+	width: min-content;
+	margin: auto;
+}
+.btn-group {
+	display:inline;
+	position: relative;
+	width: fit-content;
+	float: right;
+	top: 0;
+	right: 7%;
 	z-index: 10;
 }
 
-.btn-group button:not(:last-child) {
+.btn-group button {
+  background-color: #af684c;
+  border: 3px solid brown;
+  color: white;
+  padding: 5px 24px;
+  cursor: pointer;
+  width: fit-content;
+  display:inline;
+  border-top-left-radius: 20%;
+  border-top-right-radius: 20%;
   border-bottom: none;
+  font-size: 80%;
 }
 
 
@@ -155,11 +165,6 @@ h3 {
 	display: block;
 	width: 70px;
 	height: 100px;
-	margin: 0 auto;
-}
-
-#newGame {
-	display: block;
 	margin: 0 auto;
 }
 
