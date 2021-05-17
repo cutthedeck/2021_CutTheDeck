@@ -1,5 +1,6 @@
 $(function() {
   
+  $(" .chat-container").fadeToggle("slow").draggable();
 
   // function for showing rules of a game
   $(" .fade").click(function(){
@@ -10,8 +11,6 @@ $(function() {
   //Display Chat inside a game
   $(" .fade_chat").click(function(){
 
-    if($(" #boxed").css('display')=='block'){
-    }
     if(!window.localStorage.getItem('user')){
     var user = prompt("Please enter your user name");
     if (user) {
