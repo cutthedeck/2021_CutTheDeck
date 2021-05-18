@@ -822,6 +822,21 @@ $(function() {
 			}
 			
 		});
+
+		playArea.$selector.mouseleave(function(e) {
+
+			if (drag.hasCards()) {
+				let dragCard = drag.cards[0];
+
+				// remove border if moving to empty spot
+				if (dragCard.oldCollection.hasCards() && dragCard.oldCollection.getLastCard().suit == "Border") {
+					dragCard.oldCollection.cards.pop();
+				}
+				
+				moveCards(drag.cards.length, drag, dragCard.oldCollection, true);
+			}
+			
+		});
 		
 		playArea.$selector.mousemove(function(e) {
 			mouseX = e.pageX - playArea.xOffset;

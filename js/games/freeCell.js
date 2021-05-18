@@ -552,16 +552,6 @@ $(function() {
 
 	function playGame() {
 
-    $("#back-btn").click(function(){
-      let val = localStorage.getItem('card-back');
-      cardRefs.forEach(card => {
-        if(val == "undefined") {
-          card.backImage.src = "imgs/sprites/cardBack.png";           
-        } else {
-          card.backImage.src = "imgs/sprites/cardBack_" + val + ".png";
-        }				
-      });
-    });
 
 		// Grab the main deck
 		cardRefs.forEach(card => {
@@ -873,13 +863,27 @@ $(function() {
 			}
 			
 		});
+
+		playArea.$selector.mouseleave(function(e) {
+
+			if (drag.hasCards()) {
+				let dragCard = drag.cards[0];
+
+				// remove border if moving to empty spot
+				if (dragCard.oldCollection.hasCards() && dragCard.oldCollection.getLastCard().suit == "Border") {
+					dragCard.oldCollection.cards.pop();
+				}
+				
+				moveCards(drag.cards.length, drag, dragCard.oldCollection, true);
+			}
+			
+		});
 		
 		playArea.$selector.mousemove(function(e) {
 			mouseX = e.pageX - playArea.xOffset;
 			mouseY = e.pageY - playArea.yOffset;
 			drag.moveCollection(mouseX, mouseY);			
-		});
-		
+		});	
 		
 	}
 	
@@ -887,6 +891,17 @@ $(function() {
 	$( window ).resize(function(){
 		playArea.setOffsets();
 	})
+
+	$("#back-btn").click(function(){
+		let val = localStorage.getItem('card-back');
+		cardRefs.forEach(card => {
+		  if(val == "undefined") {
+			card.backImage.src = "imgs/sprites/cardBack.png";           
+		  } else {
+			card.backImage.src = "imgs/sprites/cardBack_" + val + ".png";
+		  }				
+		});
+	  });
 
 	// Global vars
 	var cardImages = new Map();
