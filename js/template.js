@@ -4,7 +4,25 @@ class CtdHeader extends HTMLElement {
       <header>
         <img id=title src=imgs/img_header.png>
       </header>
-    `        
+    `
+  
+    if(navigator.userAgent.indexOf("Safari") != -1)
+    { 
+        this.innerHTML = `
+        <header>
+          <div id = "browserMessage">
+            Safari is not fully supported.  Please use a different browser to access all features.
+          </div>
+          <img id=title src=imgs/img_header.png>
+        </header>
+        `
+    } else {
+      this.innerHTML = `
+      <header>
+        <img id=title src=imgs/img_header.png>
+      </header>
+      `
+    }
   }
 }
 
