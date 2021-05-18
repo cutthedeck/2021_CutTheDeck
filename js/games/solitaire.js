@@ -456,6 +456,7 @@ $(function() {
 		let collection = piles[i];
 		if (!collection.cards.length) {
 			collection.addCard(cardRefs.get("CardBorderPile" + i));
+			collection.getLastCard().show();
 		} else if (collection.getLastCard().suit == "Border") {
 			collection.pop();
 		}
