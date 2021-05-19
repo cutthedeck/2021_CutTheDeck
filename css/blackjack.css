@@ -42,3 +42,7 @@
   height: 9rem;
 }
 
+.chat-container {
+  float: clear;
+  display: block;
+}

@@ -6,13 +6,20 @@
 	--error-color: #d9534f;
 }
 
+#wrapper {
+	position: relative;
+	display: flex;
+	width: min-content;
+	margin: 0 auto;
+}
+
 #gameTable {
 	position: relative;
 	margin: 0 auto;
 	border-radius: 50px;
 	background-color: forestgreen;
 	border: 5px solid brown;
-  overflow: hidden;
+  	overflow: hidden;
 }
 
 img {
@@ -41,9 +48,10 @@ img {
 
 #gameGroup {
 	position: relative;
+	float: left;
 	width: min-content;
-	margin: auto;
 }
+
 .btn-group {
 	display:inline;
 	position: relative;
@@ -82,7 +90,7 @@ img {
 	display: none;
 	position: absolute;
 	height: 240px;
-	top:4px;
+	top:260px;
 	width: 940px;
 	left:240px;
 	border-radius: 2%;
@@ -190,23 +198,36 @@ a {
 
 .chat-container {
 	position: relative;
+	float: left;
 	max-width: 700px;
 	width: 600px;
-	margin:0 auto;
-	top: -52em;
-		background: #fff;
-	margin: 30px auto;
-	z-index: 1000000000;
+	height:fit-content;
+	margin: auto;
+	z-index: 1000060;
 
 	border-radius: 5%;
 	display: none;
 }
 
+.chat-container button {
+  background-color: #af684c;
+  border: 3px solid brown;
+  color: white;
+  /* padding: 5px 24px; */
+  cursor: pointer;
+  width: fit-content;
+  display:inline;
+  border-radius: 20%;
+  font-size: 80%;
+}
+
 .chat-header {
-	background: var(--dark-color-a);
+	background: rgba(34, 139, 34, 0.6);
 	color: #fff;
-	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border: 3px solid brown;
+	border-bottom: none;
 	padding: 15px;
 	display: flex;
 	align-items: center;
@@ -216,11 +237,13 @@ a {
 
 .chat-main {
 	display: grid;
+	border-right: 3px solid brown;
+	border-left: 3px solid brown;
 	grid-template-columns: 1fr 3fr;
 }
 
 .chat-sidebar {
-	background: var(--dark-color-b);
+	background: rgba(34, 139, 34, 0.6);
 	color: #fff;
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
@@ -247,12 +270,13 @@ a {
 	max-height: 500px;
 	max-width: 900px;
 	overflow-y: scroll;
+	background: rgba(34, 139, 34, 0.6);
 }
 
 .chat-messages .message {
 	padding: 10px;
 	margin-bottom: 15px;
-	background-color: var(--light-color);
+	background-color:khaki;
 	border-radius: 5px;
 	overflow-wrap: break-word;
 }
@@ -260,7 +284,7 @@ a {
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
-	color: var(--dark-color-b);
+	color: black;
 	opacity: 0.7;
 	margin-bottom: 7px;
 }
@@ -271,8 +295,12 @@ a {
 
 .chat-form-container {
 	padding: 20px 30px;
-	background-color: var(--dark-color-a);
+	background: rgba(34, 139, 34, 0.6);
 	height: 20px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border: 3px solid brown;
+	border-top: none;
 }
 
 .chat-form-container form {

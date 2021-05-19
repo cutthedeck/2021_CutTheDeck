@@ -11,54 +11,52 @@
 <body>
   <ctd-header></ctd-header>
 	<img src="imgs/img_game_menu.png" id="navHome">
-  <div class="wrapper">
+  <div id="wrapper">
 
 
-  
-  </div>
-
-  <div id = "gameGroup">
-    <!-- Adding panel for chat and Rule set-->
-    <div class="btn-group">
-      <button class="fade_chat">Chat</button>
-      <button class="fade">Rules</button>
-      <button class="fade-options">Options</button>
-      <button id= "gameMode">Multiplayer</button>
-    </div>
-
-
-    <div id="gameTable">
-      <h3>War</h3>
-      <div id="message">
-        Click on the deck to begin
+    <div id = "gameGroup">
+      <!-- Adding panel for chat and Rule set-->
+      <div class="btn-group">
+        <button class="fade_chat">Chat</button>
+        <button class="fade">Rules</button>
+        <button class="fade-options">Options</button>
+        <button id= "gameMode">Multiplayer</button>
       </div>
-      <img src="imgs/img_war_link.png" class="icon">
+
+
+      <div id="gameTable">
+        <h3>War</h3>
+        <div id="message">
+          Click on the deck to begin
+        </div>
+        <img src="imgs/img_war_link.png" class="icon">
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <header class="chat-header">
+        <p hidden id="user"></p>
+        <h1><i class="fas fa-smile"></i> Game Chat</h1>
+        <button class="userName">Change User Name?</button>
+      </header>
+      <main class="chat-main">
+        <div class="chat-sidebar">
+          <h3><i class="fas fa-comments"></i> Room Name:</h3>
+          <h2 id="room-name"></h2>
+          <h3><i class="fas fa-users"></i> Users</h3>
+          <ul id="users"></ul>
+        </div>
+        <div class="chat-messages"></div>
+      </main>
+      <div class="chat-form-container">
+        <form id="chat-form" style="height:25px">
+          <input style="height:10px" id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
+          <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+        </form>
+      </div>
     </div>
   </div>
 
-  <div class="chat-container">
-    <header class="chat-header">
-      <p hidden id="user"></p>
-      <h1><i class="fas fa-smile"></i> Game Chat</h1>
-      <button class="userName">Change User Name?</button>
-    </header>
-    <main class="chat-main">
-      <div class="chat-sidebar">
-        <h3><i class="fas fa-comments"></i> Room Name:</h3>
-        <h2 id="room-name"></h2>
-        <h3><i class="fas fa-users"></i> Users</h3>
-        <ul id="users"></ul>
-      </div>
-      <div class="chat-messages"></div>
-    </main>
-    <div class="chat-form-container">
-      <form id="chat-form" style="height:25px">
-        <input style="height:10px" id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
-        <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
-      </form>
-    </div>
-  </div>
-  </div>
   <div id="boxed">
     <h4>Rules:</h4>
     <p>

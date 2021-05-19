@@ -1,6 +1,11 @@
 $(function() {
   
-  $(" .chat-container").fadeToggle("slow").draggable();
+  if (window.localStorage.getItem('user')) {
+    $(" .chat-container").fadeToggle("slow");
+  } else {
+    socket.emit('changeName');
+  }
+  //.draggable();
 
   // function for showing rules of a game
   $(" .fade").click(function(){
@@ -12,22 +17,26 @@ $(function() {
   $(" .fade_chat").click(function(){
 
     if(!window.localStorage.getItem('user')){
-    var user = prompt("Please enter your user name");
-    if (user) {
+      var user = prompt("Please enter your user name");
 
-      window.localStorage.setItem('user', user);
-      console.log(localStorage.getItem('user'));
-      location.reload();
-      return false;
+      if (user) {
+
+        window.localStorage.setItem('user', user);
+        socket.emit('changeName');
+        username = window.localStorage.getItem('user');
+        socket.emit('joinRoom', {username: username, room:room});
+        $(" .chat-container").fadeToggle("slow");
+
+        return false;
 
 
+      }
+      else{
+        alert("Must enter a user name before using the chat");
     }
-    else{
-      alert("Must enter a user name before using the chat");
-    }
 
-  }else{
-    $(" .chat-container").fadeToggle("slow").draggable();
+  } else{
+    $(" .chat-container").fadeToggle("slow");
   }
   });
 
@@ -37,8 +46,10 @@ $(function() {
     var user = prompt("Please enter your user name");
     user.replace(/(<([^>]+)>)/gi, "");
     window.localStorage.setItem('user', user);
-    $(" .chat-container").fadeToggle("slow").draggable();
-    location.reload();
+
+    socket.emit('changeName');
+    username = window.localStorage.getItem('user');
+    socket.emit('joinRoom', {username: username, room:room});
 return false;
   });
 

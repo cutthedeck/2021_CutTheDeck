@@ -2,7 +2,7 @@ const chatForm = document.getElementById('chat-form');
 const chatMessage = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
-const username = window.localStorage.getItem('user');
+var username = window.localStorage.getItem('user');
 console.log(username);
 const room = document.getElementById('room').innerText;
 
@@ -54,6 +54,8 @@ chatForm.addEventListener('submit', (e)=>{
 
 });
 
+
+
 // output message to Dom
 function outputMessage(message){
 
@@ -68,9 +70,9 @@ function outputMessage(message){
 
   }else if(message.username == "Admin"){
     const div = document.createElement('div');
-    div.setAttribute("style", "max-width: 500px;text-align: center;background-color:red; font-size:.95em;position:relative;right: -20px;");
+    div.setAttribute("style", "max-width: 500px;text-align: center;background-color:#af684c; font-size:.95em;position:relative;right: -20px;");
     div.classList.add('message');
-    div.innerHTML = `<p class="meta">${message.username}x<span> ${message.time}</span></p>
+    div.innerHTML = `<p class="meta">${message.username}<span> ${message.time}</span></p>
     <p class="text"> ${message.text} </p>`;
     document.querySelector('.chat-messages').appendChild(div);
 

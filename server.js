@@ -51,7 +51,6 @@ io.on('connection', socket => {
   }
   });
 
-
   // Listen for chat Message
   socket.on('chatMessage', msg => {
     const user = getCurrentUser(socket.id);
@@ -61,6 +60,15 @@ io.on('connection', socket => {
 
   // Runs when user disconnects
   socket.on('disconnect', () => {
+    disconnectHandler();
+
+  });
+
+  socket.on('changeName', () => {
+    disconnectHandler();
+  })
+
+  function disconnectHandler() {
     const user = userLeave(socket.id);
 
     if (user) {
@@ -81,8 +89,7 @@ io.on('connection', socket => {
       let gameRoom = gameRooms[socket.id];
       io.sockets.in(gameRooms[socket.id]).emit("playerDisconnect");
     }
-
-  });
+  }
 
 
   // Game stuff
