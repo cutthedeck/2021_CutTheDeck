@@ -35,6 +35,7 @@ $(function() {
   $(" .userName").click(function(){
     window.localStorage.removeItem('user');
     var user = prompt("Please enter your user name");
+    $(user) = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($des))))));
     window.localStorage.setItem('user', user);
     $(" .chat-container").fadeToggle("slow").draggable();
     location.reload();
