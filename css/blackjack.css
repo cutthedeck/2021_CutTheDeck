@@ -46,3 +46,8 @@
   float: clear;
   display: block;
 }
+
+.btn-group button {
+  border: 3px solid brown !important;
+  border-radius: 20%;
+}
