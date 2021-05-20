@@ -13,6 +13,10 @@ $(function() {
 			this.setOffsets();
 			this.defaultStagerX = 0.3;
 			this.defaultStagerY = -0.3;
+
+			setInterval(function() {
+				playArea.setOffsets();
+			}, 100);
 		}
 		
 		setOffsets() {
