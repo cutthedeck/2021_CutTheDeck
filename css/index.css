@@ -41,6 +41,10 @@ td {
     width: 175%;
   }
 
+  #freecellLinkImg {
+    width: 135%;
+  }
+
   td {
     height: 0.9rem;
   }
@@ -63,6 +67,10 @@ td {
 
   #aboutUsLinkImg {
     width: 175%;
+  }
+
+  #freecellLinkImg {
+    width: 135%;
   }
 
   td {
@@ -94,6 +102,10 @@ td {
     width: 175%;
   }
 
+  #freecellLinkImg {
+    width: 135%;
+  }
+
   td {
     width: 5.75rem;
     height: 1.25rem;
@@ -117,6 +129,10 @@ td {
 
   #aboutUsLinkImg {
     width: 175%;
+  }
+
+  #freecellLinkImg {
+    width: 135%;
   }
   
   td {
