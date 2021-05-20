@@ -21,3 +21,10 @@ https://cutthedeck.herokuapp.com/
 > Stats can now be tracked while playing
 > Chat has been fully enabled
 https://cutthedeck.herokuapp.com/
+
+# Release 6
+> Several bugs were fixed, including ones that affected play ability
+> Various visual issues were fixed
+> Chat was visually redesigned, made static, and now allows name changes without refreshing
+> Security issues were investigated and dealt with
+> https://cutthedeck.herokuapp.com/
